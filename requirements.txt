@@ -10,5 +10,3 @@ numpy
 pandas
 pyarrow
 requests
-gzip
-shutil

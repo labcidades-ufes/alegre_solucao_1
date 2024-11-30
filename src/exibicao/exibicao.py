@@ -224,10 +224,8 @@ def server(input, output, session):
         mapa = criar_mapa()
         mapa_html = mapa._repr_html_()
         return ui.HTML(mapa_html)
-
-
-
-def rodar_app():
+    
+def roda_app():
     # Criar o app
     app = App(obter_app_ui(), server)
 

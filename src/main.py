@@ -1,7 +1,6 @@
 from coleta.download_dados import *
 from tratamento.tratamento import *
 from processamento.processamento import *
-from exibicao.exibicao import rodar_app
 
 def ask_for_download():
     while True:
@@ -30,18 +29,6 @@ def ask_for_tratamento():
 def ask_for_process():
     while True:
         answer = input("Deseja fazer o processamento dos dados? (sim/nao): ").lower()
-        if answer in ['sim', 'nao']:
-            if(answer == 'sim'):
-                return True
-            else:
-                return False
-        else:
-            print("Por favor, responda com 'sim' ou 'não'.")
-
-
-def ask_for_running_app():
-    while True:
-        answer = input("Deseja rodar o app localmente? (sim/nao): ").lower()
         if answer in ['sim', 'nao']:
             if(answer == 'sim'):
                 return True
@@ -81,16 +68,6 @@ def main():
         obter_gdf_peso_hexagonos()
     else:
         print("Processamento ignorado.")
-
-    if ask_for_running_app():
-        print("Iniciando aplicação shiny...")
-
-        #App
-        rodar_app()
-    else:
-        print("Encerrando!")
-    
-
 
 # Bloco principal
 if __name__ == "__main__":
