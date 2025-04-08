@@ -8,7 +8,7 @@ import math
 
 def obter_centroides():
     # Definir o caminho relativo
-    caminho_geojson_population_alegre = os.path.join("..", "dados", "dados_tratados", "population_alegre.geojson")
+    caminho_geojson_population_alegre = os.path.join("dados", "dados_tratados", "population_alegre.geojson")
 
     # Carregar os dados
     gdf_population_alegre = gpd.read_file(caminho_geojson_population_alegre)
@@ -24,7 +24,7 @@ def obter_centroides():
     gdf_centroides.set_geometry('centroid', inplace=True)
 
     #salva o arquivo
-    gdf_centroides.to_file(os.path.join("..", "dados", "dados_processados", "population_alegre_centroides.geojson"), driver='GeoJSON')
+    gdf_centroides.to_file(os.path.join("dados", "dados_processados", "population_alegre_centroides.geojson"), driver='GeoJSON')
     print("Centroides criados.")
     
 
@@ -32,7 +32,7 @@ def obter_centroides():
 # Função para obter um polígono expandido da área de Alegre
 def obter_dados_viarios_expandido(buffer_size=5000):
     # Definir o caminho relativo
-    caminho_municipio = os.path.join("..", "dados", "dados_tratados", "limite_municipio_alegre.geojson")
+    caminho_municipio = os.path.join("dados", "dados_tratados", "limite_municipio_alegre.geojson")
     
     # Carregar os dados
     municipio_alegre = gpd.read_file(caminho_municipio)
@@ -62,20 +62,20 @@ def obter_dados_viarios_expandido(buffer_size=5000):
     gdf_viario = ox.graph_to_gdfs(G, nodes=False)
 
     #salva o geodataframe
-    gdf_viario.to_file(os.path.join("..", "dados", "dados_processados", "viario_expandido_alegre.geojson"), driver='GeoJSON')
+    gdf_viario.to_file(os.path.join("dados", "dados_processados", "viario_expandido_alegre.geojson"), driver='GeoJSON')
     print("Rede viaria expandida criada.")
 
     # Salvar o grafo em formato GraphML
-    ox.save_graphml(G, filepath=os.path.join("..", "dados", "dados_processados", "grafo_viario_expandido_alegre.graphml"))
+    ox.save_graphml(G, filepath=os.path.join("dados", "dados_processados", "grafo_viario_expandido_alegre.graphml"))
 
     
 
 # Função para calcular e desenhar a rota mais curta
 def obter_rotas_centroide_para_saude():
     # Definir o caminho relativo
-    caminho_grafo = os.path.join("..", "dados", "dados_processados", "grafo_viario_expandido_alegre.graphml")
-    caminho_geojson_population_alegre_centroides = os.path.join("..", "dados", "dados_processados", "population_alegre_centroides.geojson")
-    caminho_geojson_unidades_saude_alegre = os.path.join("..", "dados", "dados_tratados", "unidades_saude_alegre.geojson")
+    caminho_grafo = os.path.join("dados", "dados_processados", "grafo_viario_expandido_alegre.graphml")
+    caminho_geojson_population_alegre_centroides = os.path.join("dados", "dados_processados", "population_alegre_centroides.geojson")
+    caminho_geojson_unidades_saude_alegre = os.path.join("dados", "dados_tratados", "unidades_saude_alegre.geojson")
 
     # Carregar os dados
     grafo_viario = ox.load_graphml(caminho_grafo)
@@ -127,17 +127,17 @@ def obter_rotas_centroide_para_saude():
     gdf_rotas = gpd.GeoDataFrame(rotas, crs="EPSG:31984")
 
     #salva o geodataframe
-    gdf_rotas.to_file(os.path.join("..", "dados", "dados_processados", "rotas.geojson"), driver='GeoJSON')
+    gdf_rotas.to_file(os.path.join("dados", "dados_processados", "rotas.geojson"), driver='GeoJSON')
     print("\nRotas para unidades de saúde criadas.")
 
 
 
 def obter_gdf_peso_hexagonos():
     # Definir o caminho relativo
-    caminho_grafo = os.path.join("..", "dados", "dados_processados", "grafo_viario_expandido_alegre.graphml")
-    caminho_geojson_population_alegre = os.path.join("..", "dados", "dados_tratados", "population_alegre.geojson")
-    caminho_geojson_population_alegre_centroides = os.path.join("..", "dados", "dados_processados", "population_alegre_centroides.geojson")
-    caminho_geojson_unidades_saude_alegre = os.path.join("..", "dados", "dados_tratados", "unidades_saude_alegre.geojson")
+    caminho_grafo = os.path.join("dados", "dados_processados", "grafo_viario_expandido_alegre.graphml")
+    caminho_geojson_population_alegre = os.path.join("dados", "dados_tratados", "population_alegre.geojson")
+    caminho_geojson_population_alegre_centroides = os.path.join("dados", "dados_processados", "population_alegre_centroides.geojson")
+    caminho_geojson_unidades_saude_alegre = os.path.join("dados", "dados_tratados", "unidades_saude_alegre.geojson")
 
     # Carregar os dados
     grafo_viario = ox.load_graphml(caminho_grafo)
@@ -225,5 +225,5 @@ def obter_gdf_peso_hexagonos():
     gdf_novo_hexagonos = gdf_novo_hexagonos.to_crs(epsg=31984)
 
     #salva o geodataframe
-    gdf_novo_hexagonos.to_parquet(os.path.join("..", "dados", "dados_processados", "peso_hexagonos.parquet"))
+    gdf_novo_hexagonos.to_parquet(os.path.join("dados", "dados_processados", "peso_hexagonos.parquet"))
     print("\nPesos criados.")

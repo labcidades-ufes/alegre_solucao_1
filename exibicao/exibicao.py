@@ -15,14 +15,14 @@ def criar_mapa():
     zoom_inicial = 10
 
     # Definir o caminho relativo
-    caminho_municipio = os.path.join("..", "dados", "dados_tratados", "limite_municipio_alegre.geojson")
-    caminho_geojson_unidades_saude_alegre = os.path.join("..", "dados", "dados_tratados", "unidades_saude_alegre.geojson")
-    caminho_geojson_unidades_saude_alegre_apoio = os.path.join("..", "dados", "dados_tratados", "unidades_saude_apoio_alegre.geojson")
-    caminho_geojson_population_alegre = os.path.join("..", "dados", "dados_tratados", "population_alegre.geojson")
-    caminho_geojson_population_alegre_centroides = os.path.join("..", "dados", "dados_processados", "population_alegre_centroides.geojson")
-    caminho_geojson_viario_expandido = os.path.join("..", "dados", "dados_processados", "viario_expandido_alegre.geojson")
-    caminho_geojson_rotas = os.path.join("..", "dados", "dados_processados", "rotas.geojson")
-    caminho_geojson_peso_hexagonos = os.path.join("..", "dados", "dados_processados", "peso_hexagonos.parquet")
+    caminho_municipio = os.path.join("dados", "dados_tratados", "limite_municipio_alegre.geojson")
+    caminho_geojson_unidades_saude_alegre = os.path.join("dados", "dados_tratados", "unidades_saude_alegre.geojson")
+    caminho_geojson_unidades_saude_alegre_apoio = os.path.join("dados", "dados_tratados", "unidades_saude_apoio_alegre.geojson")
+    caminho_geojson_population_alegre = os.path.join("dados", "dados_tratados", "population_alegre.geojson")
+    caminho_geojson_population_alegre_centroides = os.path.join("dados", "dados_processados", "population_alegre_centroides.geojson")
+    caminho_geojson_viario_expandido = os.path.join("dados", "dados_processados", "viario_expandido_alegre.geojson")
+    caminho_geojson_rotas = os.path.join("dados", "dados_processados", "rotas.geojson")
+    caminho_geojson_peso_hexagonos = os.path.join("dados", "dados_processados", "peso_hexagonos.parquet")
 
     # Carregar os dados
     gdf_municipio_alegre = gpd.read_file(caminho_municipio)

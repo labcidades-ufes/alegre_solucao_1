@@ -3,7 +3,7 @@ import geopandas as gpd
 
 def obter_limite_municipio_alegre():
     # Definir o caminho relativo
-    caminho_municipios = os.path.join("..", "dados", "dados_baixados", "limites_municipios_ES.geojson")
+    caminho_municipios = os.path.join("dados", "dados_baixados", "limites_municipios_ES.geojson")
     
     # Carregar os dados
     gdf_municipios = gpd.read_file(caminho_municipios)
@@ -12,15 +12,15 @@ def obter_limite_municipio_alegre():
     gdf_municipio_alegre = gdf_municipios[gdf_municipios['nome'] == 'Alegre']
     
     #salvar
-    gdf_municipio_alegre.to_file(os.path.join("..", "dados", "dados_tratados", "limite_municipio_alegre.geojson"), driver='GeoJSON')
+    gdf_municipio_alegre.to_file(os.path.join("dados", "dados_tratados", "limite_municipio_alegre.geojson"), driver='GeoJSON')
     print("Limite de municipio de Alegre criado.")
 
 
 # Função para realizar a interseção e filtrar por Alegre
 def obter_hexagonos_alegre():
     # Definir o caminho relativo
-    caminho_municipios = os.path.join("..", "dados", "dados_tratados", "limite_municipio_alegre.geojson")
-    caminho_population = os.path.join("..", "dados", "dados_baixados", "kontur_population_BR_20231101.gpkg")
+    caminho_municipios = os.path.join("dados", "dados_tratados", "limite_municipio_alegre.geojson")
+    caminho_population = os.path.join("dados", "dados_baixados", "kontur_population_BR_20231101.gpkg")
     
     # Carregar os dados
     municipio_alegre = gpd.read_file(caminho_municipios)
@@ -37,13 +37,13 @@ def obter_hexagonos_alegre():
         print("Nenhuma interseção encontrada para o município de Alegre.")
     
     #salva o arquivo
-    intersected.to_file(os.path.join("..", "dados", "dados_tratados", "population_alegre.geojson"), driver='GeoJSON')
+    intersected.to_file(os.path.join("dados", "dados_tratados", "population_alegre.geojson"), driver='GeoJSON')
     print("População de Alegre criada.")
 
 
 def obter_unidades_saude_alegre():
     # Definir o caminho relativo
-    caminho_geojson_unidades_saude_ES = os.path.join("..", "dados", "dados_baixados", "unidades_saude_ES.geojson")
+    caminho_geojson_unidades_saude_ES = os.path.join("dados", "dados_baixados", "unidades_saude_ES.geojson")
     
     # Carregar os dados
     gdf_unidades_saude_ES = gpd.read_file(caminho_geojson_unidades_saude_ES)
@@ -63,7 +63,7 @@ def obter_unidades_saude_alegre():
     ]
 
     #salva o arquivo
-    gdf_unidades_saude_alegre.to_file(os.path.join("..", "dados", "dados_tratados", "unidades_saude_alegre.geojson"), driver='GeoJSON')
+    gdf_unidades_saude_alegre.to_file(os.path.join("dados", "dados_tratados", "unidades_saude_alegre.geojson"), driver='GeoJSON')
     print("Unidades de saude de Alegre criadas.")
 
     #unidades de saude de apoio de Alegre
@@ -74,5 +74,5 @@ def obter_unidades_saude_alegre():
         | (gdf_unidades_saude_alegre['NOME'].str.contains('US de Roseira', na=False, case=False))]
 
     #salva o arquivo
-    gdf_unidades_saude_apoio.to_file(os.path.join("..", "dados", "dados_tratados", "unidades_saude_apoio_alegre.geojson"), driver='GeoJSON')
+    gdf_unidades_saude_apoio.to_file(os.path.join("dados", "dados_tratados", "unidades_saude_apoio_alegre.geojson"), driver='GeoJSON')
     print("Unidades de saude de apoio de Alegre criadas.")
