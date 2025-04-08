@@ -194,9 +194,9 @@ def obter_app_ui():
                 ),
                 style="float: left; margin-left: 50px; display: flex; flex-direction: column; align-items: flex-start; font-size: 1.5em;"
             ),
-            ui.tags.h2("Visualização geolocalizada de acesso às Unidades Básicas de Saúde",
-                style="color: #93319B; margin: 0 50px 0 0; padding: 0; float: right; font-size: 1.5em;"),
-            style="height: 15vh; width: 100vw; padding: 10px; font-size: 3vh; display: flex; justify-content: space-between; align-items: center; background-color: white; font-family: 'Arial', sans-serif; font-weight: bold;"
+            ui.tags.h2("Visualização Geoespacial do Acesso às Unidades Básicas de Saúde de Alegre/ES",
+                style="color: #93319B; margin: 0 50px 0 0; padding: 0; float: right; font-size: 2.5em;"),
+            style="height: 15vh; width: 100vw; padding: 10px; font-size: 2vh; display: flex; justify-content: space-between; align-items: center; background-color: white; font-family: 'Arial', sans-serif; font-weight: bold;"
         ),
 
         # Corpo do aplicativo (mapa, gráficos, etc.)
