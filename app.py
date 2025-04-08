@@ -1,8 +1,10 @@
-from exibicao.exibicao import roda_app
+# app.py
+from exibicao.exibicao import obter_app_ui, server
+from shiny import App
 
-def main():
-    roda_app()
+# Cria a instância do app e a exporta com o nome 'app'
+app = App(obter_app_ui(), server)
 
-# Bloco principal
 if __name__ == "__main__":
-    main()
+    app.run()
+
